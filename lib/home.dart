@@ -43,7 +43,7 @@ class HomeScreen extends StatelessWidget {
       body: Center(
         child: Column(
           children: [
-            Image.asset('dash.png'),
+            Image.asset('placeholder.jpg'),
             Text(
               'Welcome!',
               style: Theme.of(context).textTheme.displaySmall,
