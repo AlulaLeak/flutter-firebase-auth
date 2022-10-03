@@ -1,8 +1,9 @@
-import 'package:fireflutter/hello.dart';
+import 'dart:io';
+
+import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:flutterfire_ui/auth.dart';
-import './src/sample_feature/sample_item_list_view.dart';
-import './src/sample_feature/sample_item_details_view.dart';
+import './widgets/profile_icon.dart';
+import './hello.dart';
 
 void main() => runApp(const HomeScreen());
 
@@ -17,8 +18,6 @@ class HomeScreen extends StatelessWidget {
       title: _title,
       routes: {
         '/': (context) => const MyStatefulWidget(),
-        '/sample_item': (context) => const SampleItemDetailsView(),
-        '/sample_list': (context) => const SampleItemListView(),
       },
     );
   }
@@ -37,8 +36,8 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static const List<Widget> _widgetOptions = <Widget>[
     Hello(),
-    SampleItemListView(),
-    SampleItemListView(),
+    Hello(),
+    Hello(),
   ];
 
   void _onItemTapped(int index) {
@@ -51,35 +50,9 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.person),
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute<ProfileScreen>(
-                  builder: (context) => ProfileScreen(
-                    appBar: AppBar(
-                      title: const Text('User Profile'),
-                    ),
-                    actions: [
-                      SignedOutAction((context) {
-                        Navigator.of(context).pop();
-                      })
-                    ],
-                    children: [
-                      const Divider(),
-                      Padding(
-                        padding: const EdgeInsets.all(2),
-                        child: Image.asset('placeholder.jpg', scale: 1),
-                      ),
-                      const Divider(),
-                    ],
-                  ),
-                ),
-              );
-            },
-          )
+        title: const Text('Empty App'),
+        actions: const [
+          ProfileIcon(),
         ],
         automaticallyImplyLeading: false,
       ),

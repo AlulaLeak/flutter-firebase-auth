@@ -4,8 +4,8 @@ import 'package:flutterfire_ui/auth.dart';
 
 import 'home.dart';
 
-class AuthGate extends StatelessWidget {
-  const AuthGate({super.key});
+class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({super.key});
 
   @override
   Widget build(BuildContext context) {
