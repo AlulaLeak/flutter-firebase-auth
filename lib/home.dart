@@ -1,14 +1,17 @@
-import 'dart:io';
-
-import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import './widgets/profile_icon.dart';
 import './hello.dart';
+import './widgets/users.dart';
+import './providers/user_provider.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-void main() => runApp(const HomeScreen());
+void main() => runApp(HomeScreen());
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final Stream<QuerySnapshot> usersStream =
+      FirebaseFirestore.instance.collection('users').snapshots();
 
   static const String _title = 'Flutter Code Sample';
 
@@ -34,10 +37,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget> {
   int _selectedIndex = 0;
   // static const TextStyle optionStyle =
   //     TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static const List<Widget> _widgetOptions = <Widget>[
-    Hello(),
-    Hello(),
-    Hello(),
+  final List<Widget> _widgetOptions = <Widget>[
+    const Hello(),
+    Users(),
+    Users(),
   ];
 
   void _onItemTapped(int index) {
